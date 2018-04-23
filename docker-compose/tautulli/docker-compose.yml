@@ -23,3 +23,5 @@ services:
         read_only: true
     restart: unless-stopped
     network_mode: bridge
+volumes:
+  plexpy_data:
