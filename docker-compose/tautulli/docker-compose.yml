@@ -15,13 +15,13 @@ services:
         target: /etc/localtime
         read_only: true
       - type: volume
-        source: plexpy_data
+        source: config
         target: /config
       - type: bind
-        source: /volume1/Plex/Library/Application\ Support/Plex\ Media\ Server/Logs
+        source: /volume1/Plex/Library/Application Support/Plex Media Server/Logs
         target: /logs
         read_only: true
     restart: unless-stopped
     network_mode: bridge
 volumes:
-  plexpy_data:
+  config:
