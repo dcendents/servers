@@ -1,0 +1,30 @@
+version: "3.2"
+services:
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr
+    ports:
+      - "7878:7878"
+    environment:
+      - TZ=America/Montreal
+      - PGID=100
+      - PUID=1038
+    volumes:
+      - type: bind
+        source: /etc/localtime
+        target: /etc/localtime
+        read_only: true
+      - type: bind
+        source: /volume1/data/docker/radarr/config
+        target: /config
+      - type: bind
+        source: /volume1/data/downloads
+        target: /downloads
+      - type: bind
+        source: /volume1/data/downloads/radarr
+        target: /movies
+      - type: bind
+        source: /volume1/data/downloads/radarr
+        target: /volume1/data/downloads/radarr
+    restart: unless-stopped
+    network_mode: bridge
