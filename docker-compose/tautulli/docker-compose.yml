@@ -1,0 +1,25 @@
+version: "3.2"
+services:
+  tautulli:
+    image: linuxserver/tautulli
+    container_name: tautulli
+    ports:
+      - "8381:8181"
+    environment:
+      - TZ=America/Montreal
+      - PGID=100
+      - PUID=1029
+    volumes:
+      - type: bind
+        source: /etc/localtime
+        target: /etc/localtime
+        read_only: true
+      - type: volume
+        source: plexpy_data
+        target: /config
+      - type: bind
+        source: /volume1/Plex/Library/Application\ Support/Plex\ Media\ Server/Logs
+        target: /logs
+        read_only: true
+    restart: unless-stopped
+    network_mode: bridge
