@@ -1,27 +1,27 @@
 version: "3.2"
 services:
-  lidarr:
-    image: linuxserver/lidarr
-    container_name: lidarr
+  bazarr:
+    image: linuxserver/bazarr
+    container_name: bazarr
     ports:
-      - "8686:8686"
+      - "6767:6767"
     environment:
       - TZ=America/Montreal
       - PGID=100
-      - PUID=1041
+      - PUID=1044
     volumes:
       - type: bind
         source: /etc/localtime
         target: /etc/localtime
         read_only: true
       - type: bind
-        source: /volume1/data/docker/lidarr/config
+        source: /volume1/data/docker/bazarr/config
         target: /config
       - type: bind
-        source: /volume1/data/downloads/music
-        target: /downloads
+        source: /volume1/data/downloads/radarr
+        target: /movies
       - type: bind
-        source: /volume1/data/music
-        target: /music
+        source: /volume1/data/series
+        target: /tv
     restart: unless-stopped
     network_mode: bridge

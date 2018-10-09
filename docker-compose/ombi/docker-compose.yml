@@ -1,21 +1,21 @@
 version: "3.2"
 services:
-  organizr:
-    image: lsiocommunity/organizr
-    container_name: organizr
+  ombi:
+    image: linuxserver/ombi
+    container_name: ombi
     ports:
-      - "8085:80"
+      - "3579:3579"
     environment:
       - TZ=America/Montreal
       - PGID=100
-      - PUID=1042
+      - PUID=1043
     volumes:
       - type: bind
         source: /etc/localtime
         target: /etc/localtime
         read_only: true
       - type: bind
-        source: /volume1/data/docker/organizr/config
+        source: /volume1/data/docker/ombi/config
         target: /config
     restart: unless-stopped
     network_mode: bridge
