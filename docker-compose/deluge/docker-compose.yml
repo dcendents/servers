@@ -1,8 +1,25 @@
 version: "3.2"
 services:
+  nginx:
+    image: nginx:latest
+    container_name: deluge_nginx
+    hostname: deluge_nginx
+    ports:
+      - "8122:81"
+    volumes:
+      - type: bind
+        source: /etc/localtime
+        target: /etc/localtime
+        read_only: true
+      - type: bind
+        source: ./nginx.conf
+        target: /etc/nginx/conf.d/deluge.conf
+    restart: unless-stopped
+    network_mode: bridge
   deluge:
     image: binhex/arch-delugevpn
     container_name: deluge
+    hostname: deluge
     cap_add:
       - NET_ADMIN
     devices:
@@ -20,7 +37,7 @@ services:
       - STRICT_PORT_FORWARD=yes
       - ENABLE_PRIVOXY=yes
       - LAN_NETWORK=192.168.0.0/24
-      - NAME_SERVERS=209.222.18.222,37.235.1.174,8.8.8.8,209.222.18.218,37.235.1.177,8.8.4.4
+      - NAME_SERVERS=209.222.18.222,37.235.1.174,1.1.1.1,8.8.8.8,209.222.18.218,37.235.1.177,1.0.0.1,8.8.4.4
       - DEBUG=false
       - UMASK=000
       - PUID=1032
