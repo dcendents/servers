@@ -1,7 +1,7 @@
 version: "3.2"
 services:
   bazarr:
-    image: linuxserver/bazarr
+    image: hotio/bazarr
     container_name: bazarr
     ports:
       - "6767:6767"

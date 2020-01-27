@@ -1,4 +1,4 @@
-version: "3.2"
+version: "2.1"
 services:
   lidarr:
     image: linuxserver/lidarr
@@ -10,18 +10,10 @@ services:
       - PGID=100
       - PUID=1041
     volumes:
-      - type: bind
-        source: /etc/localtime
-        target: /etc/localtime
-        read_only: true
-      - type: bind
-        source: /volume1/data/docker/lidarr/config
-        target: /config
-      - type: bind
-        source: /volume1/data/downloads/music
-        target: /downloads
-      - type: bind
-        source: /volume1/data/music
-        target: /music
+      - /etc/localtime:/etc/localtime:ro
+      - /volume1/data/docker/lidarr/config:/config
+      - /volume1/data/downloads/music:/downloads
+      - /volume1/data/music:/music
     restart: unless-stopped
+    mem_limit: 350m
     network_mode: bridge

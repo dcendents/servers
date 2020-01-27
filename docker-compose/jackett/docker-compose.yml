@@ -1,4 +1,4 @@
-version: "3.2"
+version: "2.1"
 services:
   jackett:
     image: linuxserver/jackett
@@ -9,16 +9,11 @@ services:
       - TZ=America/Montreal
       - PGID=100
       - PUID=1036
+      - RUN_OPTS=--ProxyConnection=172.17.0.1:8118
     volumes:
-      - type: bind
-        source: /etc/localtime
-        target: /etc/localtime
-        read_only: true
-      - type: bind
-        source: /volume1/data/docker/jackett/config
-        target: /config
-      - type: bind
-        source: /volume1/data/downloads/watch
-        target: /downloads
+      - /etc/localtime:/etc/localtime:ro
+      - /volume1/data/docker/jackett/config:/config
+      - /volume1/data/downloads/watch:/downloads
     restart: unless-stopped
+    mem_limit: 350m
     network_mode: bridge

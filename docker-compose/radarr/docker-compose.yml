@@ -1,4 +1,4 @@
-version: "3.2"
+version: "2.1"
 services:
   radarr:
     image: linuxserver/radarr
@@ -10,21 +10,11 @@ services:
       - PGID=100
       - PUID=1038
     volumes:
-      - type: bind
-        source: /etc/localtime
-        target: /etc/localtime
-        read_only: true
-      - type: bind
-        source: /volume1/data/docker/radarr/config
-        target: /config
-      - type: bind
-        source: /volume1/data/downloads
-        target: /downloads
-      - type: bind
-        source: /volume1/data/downloads/radarr
-        target: /movies
-      - type: bind
-        source: /volume1/data/downloads/radarr
-        target: /volume1/data/downloads/radarr
+      - /etc/localtime:/etc/localtime:ro
+      - /volume1/data/docker/radarr/config:/config
+      - /volume1/data/downloads:/downloads
+      - /volume1/data/downloads/radarr:/movies
+      - /volume1/data/downloads/radarr:/volume1/data/downloads/radarr
     restart: unless-stopped
+    mem_limit: 350m
     network_mode: bridge
