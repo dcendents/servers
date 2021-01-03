@@ -1,22 +1,25 @@
 version: "3.2"
 services:
-  organizr:
-    image: organizr/organizr
-    container_name: organizr
+  calibre-web:
+    image: linuxserver/calibre-web
+    container_name: calibre-web
     ports:
-      - "8085:80"
+      - "8083:8083"
     environment:
       - TZ=America/Montreal
       - PGID=100
-      - PUID=1042
-      - fpm=true
+      - PUID=1051
+      - DOCKER_MODS=linuxserver/calibre-web:calibre
     volumes:
       - type: bind
         source: /etc/localtime
         target: /etc/localtime
         read_only: true
       - type: bind
-        source: /volume1/data/docker/organizr/config
+        source: /volume1/data/docker/calibre-web/config
         target: /config
+      - type: bind
+        source: /volume1/data/books
+        target: /books
     restart: unless-stopped
     network_mode: bridge

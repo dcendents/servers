@@ -9,7 +9,6 @@ services:
       - TZ=America/Montreal
       - PGID=100
       - PUID=1036
-      - RUN_OPTS=--ProxyConnection=172.17.0.1:8118
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /volume1/data/docker/jackett/config:/config

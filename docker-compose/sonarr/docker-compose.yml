@@ -1,20 +1,20 @@
 version: "2.1"
 services:
-  lidarr:
-    image: linuxserver/lidarr
-    container_name: lidarr
+  sonarr:
+    image: linuxserver/sonarr
+    container_name: sonarr
     ports:
-      - "8686:8686"
+      - "8989:8989"
     environment:
       - TZ=America/Montreal
       - PGID=100
-      - PUID=1041
+      - PUID=1049
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /volume1/data/docker/lidarr/config:/config
+      - /volume1/data/docker/sonarr/config:/config
       - /volume1/data/downloads:/downloads
-      - /volume1/data/music:/music
-      - /volume1/data/music-deleted:/music-deleted
+      - /volume1/data/series:/tv
+      - /volume1/data/series-deleted:/tv-deleted
     restart: unless-stopped
     mem_limit: 350m
     network_mode: bridge

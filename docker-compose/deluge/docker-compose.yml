@@ -12,7 +12,21 @@ services:
     restart: unless-stopped
     network_mode: bridge
   deluge:
-    image: binhex/arch-delugevpn@sha256:0b698e57055ce52894ad1c18ab0522c91ce9783d1f3bf6adddd655323d85449e
+    image: binhex/arch-delugevpn@sha256:64c147d82c749de870886935ad6385bbe9d7746f3001295c4354750ffa21c798
+
+    # binhex/arch-delugevpn@sha256:64c147d82c749de870886935ad6385bbe9d7746f3001295c4354750ffa21c798, 2020-10-15
+    # binhex/arch-delugevpn@sha256:ffd14e84e1e836d185be6d1ab9d5a974bac4df69861fd1d4da4a89911a21241c, 2020-09-20
+    # binhex/arch-delugevpn@sha256:a5908742874acbecf30fc2d094a35efceb153ec1c796e329ff05cf50df2383df, 2020-06-25 tracker connection problems, could have been deprecated vpn server
+    # binhex/arch-delugevpn@sha256:60af882468d226d5436cafa11d3abc0596eccb0aee335671850762660ef42a8f, 2020-05-31, ok with privado
+    # binhex/arch-delugevpn@sha256:60af882468d226d5436cafa11d3abc0596eccb0aee335671850762660ef42a8f, 2020-02-23, ok with privado
+    # binhex/arch-delugevpn@sha256:3b07858ce75b89db74239ad9a009860d76af53581015394856f8803c95242cfe, 2020-02-11 ok with usenet vpn
+    # binhex/arch-delugevpn@sha256:0d7e2fd397ef039bfcdd748df7d820c97c79b68edaef51728f1a54be37007705, 2020-02-21 started ok with privado
+
+
+          #binhex/arch-delugevpn@sha256:0b698e57055ce52894ad1c18ab0522c91ce9783d1f3bf6adddd655323d85449e
+    # image: binhex/arch-delugevpn@sha256:5d5b2430101e9ba1d4002a2a18f4858bbd1316ebc63f3a01192d79b3dd45d16e # 7 weeks, DNS problem after a while, couldn't curl
+    #image: binhex/arch-delugevpn@sha256:cba258ff4df88e9b2346a0c2a28af3c581e4b4ec55e559981bc258a59b8dc247 # 12 months
+    #image: binhex/arch-delugevpn@sha256:d8b6945680989b71385a9594fc3b1d12dcfda944213ae751e2ce3b7e2da81d14 # 7 months
     container_name: deluge
     hostname: deluge
     cap_add:

@@ -14,8 +14,8 @@ services:
       - "3000:3000"
     environment:
       - VPN_ENABLED=yes
-      - VPN_USER=
-      - VPN_PASS=
+      - VPN_USER=dcendents@usenetserver
+      - VPN_PASS=ScoobidooUnS12
       - VPN_PROV=custom
       - STRICT_PORT_FORWARD=yes
       - ENABLE_PRIVOXY=yes
